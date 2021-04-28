@@ -72,7 +72,7 @@ public class PercolationStats {
             StdOut.println("stddev                  = " + pp.stddev());
             StdOut.println("95% confidence interval = [" + pp.confidenceLo() + ", " + pp.confidenceHi() + "]");
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            StdOut.println(e.getMessage());
         }
     }
 }
