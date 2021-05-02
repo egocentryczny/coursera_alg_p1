@@ -32,7 +32,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     // add the item to the front
-    public void addFirst(Item item) throws IllegalArgumentException {
+    public void addFirst(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Item cannot be null");
         }
@@ -49,7 +49,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     // add the item to the back
-    public void addLast(Item item) throws IllegalArgumentException {
+    public void addLast(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Item cannot be null");
         }
@@ -62,17 +62,17 @@ public class Deque<Item> implements Iterable<Item> {
             newNode.previous = last;
             last = newNode;
         }
-        size +=1;
+        size += 1;
     }
 
     // remove and return the item from the front
-    public Item removeFirst() throws NoSuchElementException {
+    public Item removeFirst() {
         if (this.first == null) {
             throw new NoSuchElementException("There is no first element");
         }
         Item toRet = first.node;
         first = first.next;
-        if (first != null ) {
+        if (first != null) {
             first.previous = null;
         } else {
             last = null;
@@ -82,7 +82,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     // remove and return the item from the back
-    public Item removeLast() throws NoSuchElementException {
+    public Item removeLast() {
         if (this.last == null) {
             throw new NoSuchElementException("There is no last element");
         }
@@ -101,12 +101,10 @@ public class Deque<Item> implements Iterable<Item> {
     public Iterator<Item> iterator() {
         return new Iterator<Item>() {
             Node<Item> current = first;
-
             @Override
             public boolean hasNext() {
                 return current != null; 
             }
-
             @Override
             public Item next() {
                 if (!hasNext()) {
@@ -116,15 +114,12 @@ public class Deque<Item> implements Iterable<Item> {
                 current = current.next;
                 return i;
             }
-
             @Override
-            public void remove() {
-                throw new UnsupportedOperationException();
-            }
+            public void remove() { throw new UnsupportedOperationException(); }
         };
     }
 
-    public void print() {
+    private void print() {
         StdOut.println("======================");
         StdOut.print("[ ");
         for (Item i : this) {
@@ -171,7 +166,7 @@ public class Deque<Item> implements Iterable<Item> {
         que.addLast(10);
         que.addFirst(0);
         que.print();
-        StdOutt.println("size: " + que.size());
+        StdOut.println("size: " + que.size());
 
         StdOut.println(que.removeFirst());
         StdOut.println(que.removeFirst());

@@ -11,7 +11,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private int size = 0;
 
     // construct an empty randomized queue
-    public RandomizedQueue(){
+    public RandomizedQueue() {
         items = (Item[]) new Object[n];
     }
 
@@ -26,7 +26,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // add the item
-    public void enqueue(Item item) throws IllegalArgumentException {
+    public void enqueue(Item item) {
         if (item == null) {
             throw new IllegalArgumentException("Item cannot be null");
         }
@@ -37,7 +37,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // remove and return a random item
-    public Item dequeue() throws NoSuchElementException {
+    public Item dequeue() {
         if (size == 0) {
             throw new NoSuchElementException("queue is empty");
         }
@@ -49,7 +49,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     // return a random item (but do not remove it)
-    public Item sample() throws NoSuchElementException {
+    public Item sample() {
         if (size == 0) {
             throw new NoSuchElementException("queue is empty");
         }
@@ -65,7 +65,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         items = newArray;
     }
 
-    public void print() {
+    private void print() {
         StdOut.println("======================");
         StdOut.print("[ ");
         for (Item i : this) {
